@@ -1,6 +1,5 @@
-package com.pmarko09.order_service.model.entity;
+package com.pmarko09.order_service.model.dto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,14 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "ADDRESS")
-public class Address {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class AddressDto {
     private Long id;
-
     private String city;
     private String street;
     private String houseNumber;

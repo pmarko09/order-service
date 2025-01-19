@@ -1,0 +1,110 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: pmarko
+      changes:
+        - createTable:
+            tableName: CLIENT
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_client_id
+              - column:
+                  name: firstname
+                  type: VARCHAR(255)
+              - column:
+                  name: lastname
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+
+  - changeSet:
+      id: 2
+      author: pmarko
+      changes:
+        - createTable:
+            tableName: ORDERS
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_order_id
+              - column:
+                  name: cart_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total_cart_price
+                  type: double
+              - column:
+                  name: client_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_client_id
+                    references: CLIENT(id)
+              - column:
+                  name: delivery
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: payment_form
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: final_cost
+                  type: double
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 3
+      author: pmarko
+      changes:
+        - createTable:
+            tableName: INVOICE
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: order_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    unique: true
+                    foreignKeyName: fk_order_id
+                    references: ORDERS(id)
+              - column:
+                  name: invoice_number
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: issue_date
+                  type: timestamp
+                  constraints:
+                    nullable: false
