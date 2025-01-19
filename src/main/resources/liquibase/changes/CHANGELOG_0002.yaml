@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: pmarko
+      changes:
+        - createTable:
+            tableName: ADDRESS
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_address_id
+              - column:
+                  name: street
+                  type: VARCHAR(255)
+              - column:
+                  name: house_number
+                  type: VARCHAR(50)
+              - column:
+                  name: apartment_number
+                  type: VARCHAR(50)
+              - column:
+                  name: city
+                  type: VARCHAR(255)
+              - column:
+                  name: postal_code
+                  type: VARCHAR(50)
+              - column:
+                  name: country
+                  type: VARCHAR(255)
+
+  - changeSet:
+      id: 5
+      author: pmarko
+      changes:
+        - addColumn:
+            tableName: CLIENT
+            columns:
+              - column:
+                  name: address_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_client_address
+                    references: ADDRESS(id)
+                    nullable: true
