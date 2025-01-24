@@ -10,5 +10,6 @@ import org.mapstruct.Mapper;
 public interface ClientMapper {
 
     ClientDto toDto(Client client);
+
     AddressDto toDto(Address address);
 }

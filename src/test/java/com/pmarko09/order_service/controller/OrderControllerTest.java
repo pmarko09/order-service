@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pmarko09.order_service.model.dto.InvoiceDto;
 import com.pmarko09.order_service.model.dto.OrderDto;
 import com.pmarko09.order_service.model.dto.OrderRequestDto;
-import com.pmarko09.order_service.model.entity.CartInfo;
+import com.pmarko09.order_service.model.dto.CartInfoDto;
 import com.pmarko09.order_service.model.entity.OrderDelivery;
 import com.pmarko09.order_service.model.entity.PaymentForm;
 import com.pmarko09.order_service.service.OrderService;
@@ -43,9 +43,9 @@ public class OrderControllerTest {
     @Test
     void processOrder_DataCorrect_Status200Returned() throws Exception {
         log.info("Start test: processOrder_DataCorrect_Status200Returned");
-        CartInfo cartInfo = new CartInfo(2L, 90.0);
+        CartInfoDto cartInfoDto = new CartInfoDto(2L, 90.0);
         OrderRequestDto orderRequestDto = new OrderRequestDto(11L, 2L, OrderDelivery.PACZKOMAT, PaymentForm.CASH);
-        OrderDto orderDto = new OrderDto(1L, cartInfo, 11L, OrderDelivery.PACZKOMAT, PaymentForm.CASH, 100.0);
+        OrderDto orderDto = new OrderDto(1L, cartInfoDto, 11L, OrderDelivery.PACZKOMAT, PaymentForm.CASH, 100.0);
 
         when(orderService.processOrder(orderRequestDto)).thenReturn(orderDto);
 
@@ -70,8 +70,8 @@ public class OrderControllerTest {
     @Test
     void getOrdersByClientId_DataCorrect_Status200Returned() throws Exception {
         log.info("Start test: getOrdersByClientId_DataCorrect_Status200Returned");
-        CartInfo cartInfo = new CartInfo(2L, 90.0);
-        OrderDto orderDto = new OrderDto(1L, cartInfo, 11L, OrderDelivery.PACZKOMAT, PaymentForm.CASH, 100.0);
+        CartInfoDto cartInfoDto = new CartInfoDto(2L, 90.0);
+        OrderDto orderDto = new OrderDto(1L, cartInfoDto, 11L, OrderDelivery.PACZKOMAT, PaymentForm.CASH, 100.0);
 
         when(orderService.getOrdersByClient(11L)).thenReturn(List.of(orderDto));
 

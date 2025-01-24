@@ -1,4 +1,4 @@
-package com.pmarko09.order_service.model.entity;
+package com.pmarko09.order_service.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Embeddable;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Embeddable
-public class CartInfo {
+public class CartInfoDto {
 
     @JsonProperty("id")
     private Long cartId;

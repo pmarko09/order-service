@@ -13,6 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Service class for client operations.
+ * Provides methods for retrieving a list of clients and adding new clients.
+ */
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -21,6 +26,12 @@ public class ClientService {
     private final ClientRepository clientRepository;
     private final ClientMapper clientMapper;
 
+    /**
+     * Retrieves a list of clients with pagination.
+     *
+     * @param pageable Pagination information.
+     * @return A list of ClientDto objects representing the retrieved clients.
+     */
     public List<ClientDto> getAllClients(Pageable pageable) {
         log.info("Service method: fetching all clients");
         return clientRepository.findAllClients(pageable).stream()
@@ -28,6 +39,13 @@ public class ClientService {
                 .toList();
     }
 
+    /**
+     * Adds a new client.
+     * Performs validations on client name and email before saving the client.
+     *
+     * @param client The client data to be added.
+     * @return A ClientDto object representing the created client.
+     */
     @Transactional
     public ClientDto addClient(Client client) {
         log.info("Service method: adding new client");

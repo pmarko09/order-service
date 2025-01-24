@@ -1,5 +1,6 @@
 package com.pmarko09.order_service.mapper;
 
+import com.pmarko09.order_service.model.dto.CartInfoDto;
 import com.pmarko09.order_service.model.dto.InvoiceDto;
 import com.pmarko09.order_service.model.entity.*;
 import lombok.extern.slf4j.Slf4j;
@@ -20,8 +21,8 @@ public class InvoiceMapperTest {
         log.info("Star test: mapInvoiceToDto");
 
         Client client = new Client(1L, "Jan", "Kowalski", "jk@", null);
-        CartInfo cartInfo = new CartInfo(1L, 9.9);
-        Order order = new Order(5L, cartInfo, client, OrderDelivery.PACZKOMAT, PaymentForm.CASH,
+        CartInfoDto cartInfoDto = new CartInfoDto(1L, 9.9);
+        Order order = new Order(5L, cartInfoDto, client, OrderDelivery.PACZKOMAT, PaymentForm.CASH,
                 LocalDateTime.of(2024, 12, 12, 12, 12), 19.9);
         Invoice invoice = new Invoice(1L, order, "1234",
                 LocalDateTime.of(2024, 12, 22, 12, 12));

@@ -1,6 +1,5 @@
 package com.pmarko09.order_service.model.dto;
 
-import com.pmarko09.order_service.model.entity.CartInfo;
 import com.pmarko09.order_service.model.entity.OrderDelivery;
 import com.pmarko09.order_service.model.entity.PaymentForm;
 import lombok.AllArgsConstructor;
@@ -13,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class OrderDto {
 
     private Long id;
-    private CartInfo cart;
+    private CartInfoDto cart;
     private Long clientId;
     private OrderDelivery delivery;
     private PaymentForm paymentForm;

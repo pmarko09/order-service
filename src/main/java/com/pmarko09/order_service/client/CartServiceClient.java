@@ -2,7 +2,7 @@ package com.pmarko09.order_service.client;
 
 import com.pmarko09.order_service.config.FeignConfig;
 import com.pmarko09.order_service.fallback.CartServiceFallback;
-import com.pmarko09.order_service.model.entity.CartInfo;
+import com.pmarko09.order_service.model.dto.CartInfoDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,5 +14,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface CartServiceClient {
 
     @GetMapping("/cart/{cartId}")
-    CartInfo getCartById(@PathVariable Long cartId);
+    CartInfoDto getCartById(@PathVariable Long cartId);
 }
