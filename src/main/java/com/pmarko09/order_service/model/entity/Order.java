@@ -1,5 +1,6 @@
 package com.pmarko09.order_service.model.entity;
 
+import com.pmarko09.order_service.model.dto.CartInfoDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +22,7 @@ public class Order {
     private Long id;
 
     @Embedded
-    private CartInfo cart;
+    private CartInfoDto cart;
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
@@ -42,7 +43,7 @@ public class Order {
             return true;
         }
 
-        if  (!(o instanceof Order other)) {
+        if (!(o instanceof Order other)) {
             return false;
         }
 
